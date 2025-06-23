@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Print</title>
+    <link rel = "stylesheet" href = "styles.css"/>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+</head>
+<body class="TextUpload">
+    <nav>
+        <img src="images/FinePrint.png">
+        <div class="nav-links">
+            <a href="#" class="button" onclick="goToIndexPage()">Home</a>
+            <a href="#">How does the AI Work?</a>
+            <a href="#">Don't Believe Us?</a>
+            <a href="#">Extension</a>
+        </div>
+        <button onclick=goToUploadPage()>Get Started</button>
+    </nav>
+
+    <div class="insert-text">
+        <div class="input">
+            <textarea id="textInput" placeholder="Enter text here..." ></textarea>
+        </div> 
+        <div class="btn">
+            <button class="insert-text-btn" onclick="goToIndexPage()"><i class="ri-arrow-right-s-line"></i>INSERT TEXT</button>
+        </div> 
+    </div>
+
+    
+    
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const textInput = document.getElementById("textInput");
+            const insertTextBtn = document.querySelector(".insert-text-btn");
+        
+            insertTextBtn.addEventListener("click", function () {
+                const extractedText = textInput.value.trim();
+                if (extractedText) {
+                    localStorage.setItem("extracted_text", extractedText);
+                }
+                window.location.href = "belle-results.html";
+            });
+        });
+    </script>
+
+</body>
+</html>

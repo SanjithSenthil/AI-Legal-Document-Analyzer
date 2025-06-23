@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Signika:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika';
+}
+
+
+
+img{
+    object-fit: cover;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+h1{
+    font-weight: 800;
+    font-family: 'Switzer', sans-serif;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid #3A5E7A;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 16px;
+    padding: 12px;
+    z-index: 1000;
+}
+
+nav img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+nav .nav-links{
+    display: flex;
+    gap: 24px;
+}
+
+nav .nav-links a{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 15px 15px 15px;
+    padding-right: 15px;
+    color: black;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+nav .nav-links a:hover{
+    color: #3A5E7A;
+}
+
+nav button{
+    border: 2px solid #3A5E7A;
+    border-radius: 50px;
+    background-color: transparent;
+    transition: 0.3s;
+    width: 122px;
+    height: 42px;
+    padding: 0px 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+nav button:hover{
+    color: #000;
+    background: #fff;
+    border-color: #dedede;
+}
+
+body{
+    background-color: #1f4565;
+    background-image: -webkit-linear-gradient(-20deg, #1f4565, #B0E0E6 50%, #FFF 50%);
+    background-size: cover;  
+    background-attachment: fixed;  
+}
+
+.begin {        
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    padding: 0 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.begin > img{
+    max-width: 520px;
+    width: 44%;
+    border-radius: 26px;
+    margin-right: -60px;
+}
+
+.begin .title-container{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.begin .title-container .top h2{
+    font-size: 74px;
+    font-weight: 800;
+    margin-bottom: -4px;
+}
+
+.begin .title-container .top p{
+    font-size: 18px;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+.begin .title-container .top .buttons{
+    display: flex;
+    gap: 8px;
+}
+
+.begin .title-container .top .buttons button{
+    font-size: 16px;
+    border: none;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/*
+.title-container {
+    position: absolute;
+    /*top: 20%; */
+    /*
+    gap: 100px;
+    display: flex;
+    left: 10%;  /* Align to the left */
+    /*
+    transform: translateY(-50%); /* Adjust for vertical centering */
+/*} 
+/*/ 
+/* Heading styles */
+
+/* Subheading styles */
+.subheading {
+    color: rgb(200, 220, 215);
+    font-size: 1.2rem;  /* Smaller text for subtitle */
+    font-family: Verdana, sans-serif;
+    margin-top: 5px;
+    opacity: 0.8;  /* Slight transparency for softer look */
+}
+
+.navigate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #3a6a91;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.navigate-button:hover {
+    background-color: #3d749a;
+}
+
+.upload-container {
+    position: relative;
+    background-color: rgb(168, 178, 180);  
+    top: 100px;  /* Moves the folder icon outside the box */
+    border-radius: 10px;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    max-width: 600px;
+}
+
+/* Folder icon positioning */
+.folder-icon {
+    width: 250px;
+    position: absolute;
+    top: -250px;  /* Moves the folder icon outside the box */
+}
+
+/* Buttons inside the box */
+.button-box {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+}
+
+/* Button styles */
+.upload-btn, .insert-text-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-btn:hover, .insert-text-btn:hover {
+    background-color: #315F7D;
+}
+
+/* Navigation button styles */
+.navigate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.navigate-button:hover {
+    background-color: #315F7D;
+}
+
+.about{
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.about > p, .workingAI > p{
+    font-size: 14px;
+    width: 90px;
+    color: #606060;
+    border: 1px solid #e8e8e8;
+    padding: 6px 14px;
+    border-radius: 16px;
+    align-items: center;
+    text-align: center;
+    background: #FFF;
+    margin-bottom: 12px;
+}
+
+.about > h2{
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about .items{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.about .items .item{
+    width: 26%;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    background: #f1f1f1;
+    padding: 0 0 30px;
+}
+
+.about .items .item .inner{
+    background: #FFF;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #e8e8e8;
+    min-height: 365px;
+}
+
+.about .items .item .inner img{
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 12px;
+}
+
+.about .items .item .inner a{
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.about .items .item .inner p, .workingAI p{
+    font-size: 15px;
+    color: #606060;
+}
+
+.workingAI{
+    background-color: #1f4565;
+    background-image: -webkit-linear-gradient(20deg, #1f4565, #B0E0E6 50%, #FFF 50%);
+    background-size: cover;  
+    background-attachment: fixed;   
+}
+
+.workingAI .inner{
+    background: #1f1f1f;
+    color: #fff;
+    padding: 70px;
+    border-radius: 24px;
+}
+
+.workingAI > p{
+    margin-left: 600px;
+}
+
+.workingAI .inner .items .item p{
+    color: white;
+}
+
+.workingAI .inner > button i{
+    font-size: 18px;
+}
+
+.workingAI .inner > h2{
+    font-size: 38px;
+    margin-bottom: 24px;
+}
+
+
+.workingAI .inner .items{
+    display: flex;
+    gap: 20px;
+}
+
+.workingAI .inner .items .item i{
+    font-size: 38px;
+    border: 1px solid #606060;
+    border-radius: 10px;
+    padding: 10px;
+    background: #303030;
+}
+
+.workingAI .inner .items .item a{
+    display: block;
+    margin: 24px 0 14px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.projects .inner .items .item p{
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.proof{
+    padding: 100px 60px;
+    background: #f5f5f5;
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
+    border: 2px solid rgba(0,0,0,.5);
+}
+
+.proof > h2{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.proof .items{
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.proof .items .item{
+    width: 50%;
+    padding: 30px;
+    border: 1px solid #dedede;
+}
+
+.proof .items .item:nth-child(1){
+    border-radius: 12px 0 0 12px;
+}
+
+.proof .items .item:nth-child(2){
+    border-radius: 0 12px 12px 0;
+}
+
+.proof .items .item a{
+    font-size: 24px;
+    color: #000;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.proof .items .item p{
+    font-size: 20px;
+    color: #606060;
+    margin-bottom: 26px;
+}

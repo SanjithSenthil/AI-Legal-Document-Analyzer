@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Signika:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    /* background-color: #4178a4; */
+    background-image: -webkit-linear-gradient(-30deg, #1f4565, #B0E0E6);
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* Horizontally center */
+    align-items: center;       /* Vertically center */
+    height: 100vh;             /* Take up the full height of the viewport */
+    margin: 0;  
+} 
+
+
+
+.wrapper{
+    align-items: center;
+    width: 500px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 5px;
+    background-image: #FFFFFF;
+    z-index: 100; 
+    margin-top: 90px;
+    position: absolute;
+    
+}
+.wrapper2{
+    align-items: center;
+    width: 500px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 5px;
+    background-image: #FFFFFF;
+    margin-top: 100px;
+  
+    
+}
+
+.wrapper header{
+    color: #4682B4;
+    font-family: 'Switzer', sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+    text-align: center;
+
+}
+.wrapper2 header{
+    color: #4682B4;
+    font-family: 'Switzer', sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.wrapper form{
+    height: 167px;
+    display: flex;
+    margin: 30px 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 3px dashed #779ebb;
+}
+
+.wrapper2 form{
+    height: 167px;
+    display: flex;
+    margin: 30px 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 3px dashed #779ebb;
+}
+.wrapper .title-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    text-decoration: none;
+  
+    gap: 100px;
+    
+    margin-left: 10%;
+}
+
+.wrapper2 .title-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    text-decoration: none;
+    gap: 10px;
+    
+}
+form :where(i, p){
+    color:#779ebb;
+}
+
+
+form i{
+    font-size: 50px;
+    
+}
+form p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.feedback-button {
+    text-decoration: none;
+    margin-top: 60px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+    /* Centering */
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+
+.insert-text-btn {
+    text-decoration: none;
+    margin-top: 60px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+}
+.feedback-button {
+    text-decoration: none;
+    margin-top: 60px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+    /* Centering */
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.feedback-button:hover {
+    background-color: #315F7D;
+    border-color: #315F7D;
+}
+
+/* Optional: Add focus style for accessibility */
+.feedback-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #315F7D;
+}
+
+section .row{
+    background: #e9f0ff;
+    margin-bottom: 10px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+
+
+section .row i{
+    font-size: 30px;
+    color: #779ebb
+}
+
+section .details span{
+    font-size: 14px;
+}
+
+.progress-area .row .content{
+    width: 100%;
+    margin-left: 10px;
+}
+
+.progress-area .details{
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    justify-content: space-between;
+}
+
+.progress-area .progress-bar{
+    height: 10px;
+    weight: 100%;
+    background: #ffff;
+    margin-bottom: 4px;
+    border-radius: 30px;
+
+}
+
+.progress-bar .progress{
+    height: 100%;
+    width: 20%;
+    background: #607566;
+    border-radius: inherit;
+    transition: width 0.5s linear;
+
+}
+
+.FileUpload, .TextUpload{
+    background-image: -webkit-linear-gradient(-30deg, #1f4565, #B0E0E6 50%); 
+}
+
+.uploaded-area .row .content{
+    display: flex;
+    align-items: center;
+}
+
+.uploaded-area .row .details{
+    flex-direction: column;
+}
+
+.uploaded-area{
+    margin-top: 60px;
+    margin-left: 50px; 
+}
+
+.uploaded-area .row .details .size{
+    font-size: 11px;
+    color: #404040;
+
+
+}
+.uploaded-area .row .ri-check-line{
+    color: #779ebb;
+    font-size: 16px;
+}
+
+
+
+/* For the input text section */
+.insert-text {
+    margin-top: 125px; /* Add margin-top to move the input and button lower */
+    gap: 25px; /* Adjust this gap as needed */
+}
+
+.input {
+    flex-grow: 2;
+    max-width: 600px; /* Add max-width to limit how wide it gets */
+}
+
+textarea {
+   width: 500px;
+   height: 300px;
+   border: 1px solid #dedede; /* Border around the textarea */
+   border-radius: 8px; /* Slight rounding of corners */
+    font-size: 18px; /* Font size for text */
+    padding: 20px 20px; /* Padding to make the text easier to read */
+    margin-top: -80px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    background-color:#ffff ;
+    transform: translateX(-50%);
+    border-radius: 16px;
+    padding: 12px;
+    z-index: 1000;
+}
+
+nav img{
+    width: 40px;
+    height: 40px;
+}
+
+nav .nav-links{
+    display: flex;
+    gap: 24px;
+}
+
+nav .nav-links a{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: black;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+nav .nav-links a:hover{
+    color: #3A5E7A;
+}
+
+
+
+nav button{ 
+    
+    border: 2px solid #3A5E7A;
+    border-radius: 50px;
+    background-color: transparent;
+    transition: 0.3s;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 600;
+
+
+    width: 122px;
+    height: 42px;
+}
+
+nav button:hover{
+    color: #000;
+    background: #fff;
+    border-color: #dedede;
+}
+
+
+.insert-text-btn {
+    position: absolute;
+    top: 75%;
+    left: 40%;  
+    width: 244px;
+}
+    /*
+    transform: translateY(-50%);
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+    */
+
+/* font-size: 16px;
+    padding: 10px 30px;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    gap: 10px;
+    font-weight: 100;
+    background-color: #4682B4;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 30px;*/
+
+/* Add hover effect similar to "Get Started" and "Meet the Team" buttons */
+.insert-text-btn:hover {
+    background-color: #315F7D;
+    border-color: #315F7D;
+}
+
+/* Optional: Add focus style for accessibility */
+.insert-text-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px #315F7D;
+}
+
+.home-button:hover {
+    background-color: #315F7D;
+    border-color: #315F7D;
+}
+
+/* Navigation button styles */
+.home-button {
+    position: absolute;
+    top: 50%;
+    width: 244px;
+    left: 5%;  /* Align to the left */
+}
+/*
+    transform: translateY(-50%); 
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+    */
+.home-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #315F7D;
+}
+
+
+/* These are for for the upload.html buttons*/
+.navigate-button{
+    text-decoration: none;
+    /* Align to the left */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    margin-top: 20px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-family: Verdana, sans-serif;
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.navigate-button:hover {
+    background-color: #315F7D;
+    border-color: #315F7D;
+}
+
+.navigate-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #315F7D;
+}
+
+.row{
+    display: inline-flex;
+    margin-top: -32px;
+    margin-left: -50px;
+}
+
+.row:nth-child(even){
+    margin-left: 1px;
+}
+
+.row .box{
+    position: relative;
+    width: 100px;
+    height: 110px;
+    background: #FFF;
+    margin: 2px;
+    transition: 2s;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.row .box:hover{
+    transition: 0s;
+    background: #3A5E7A;
+}
+
+.row .box:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255,255, 0.02)
+}
+
+.Contamine .Meh {
+    z-index: -10;
+}
+
+.GridContainer{
+    overflow: hidden;
+}

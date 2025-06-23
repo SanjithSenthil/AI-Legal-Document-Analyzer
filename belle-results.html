@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="belle-stylesheet.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Results</title>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <nav style="background-color: white;">
+        <img src="images/FinePrint.png">
+        <div class="nav-links">
+            <a href="index.html" id="link1">Home</a>
+            <a href="#" id="link2">How does the AI Work?</a>
+            <a href="#" id="link3">Don't Believe Us?</a>
+            <a href="#">Extension</a>
+        </div>
+        <button onclick=goToUploadPage()>Get Started</button>
+    </nav>
+
+    <div class="folder">
+        <details>
+            <summary style="color:#78C1FF">Summary</summary>
+            <p>Summary section
+            <ul id="summary">
+                <li>Key Item 1</li>
+                <li>Key Item 2</li>
+            </ul>
+            </p>
+
+        </details>
+        <details>
+            <summary style="color:red">Potential Red Flags</summary>
+            <ul id="redFlags">
+                <li>Concern 1</li>
+                <li>Concern 2</li>
+            </ul>
+        </details>
+        <div class="bottom-tab"></div>
+        <button class="download">Download Your Summary <i class="ri-download-line"></i></button>
+    </div>
+
+    <script>
+
+        function goToIndexPage() {
+            window.location.href = "index.html";
+        }
+        function goToUploadPage() {
+            window.location.href = "upload.html";
+        }
+
+        function populateSections(data) {
+            let redFlagsList = document.getElementById("redFlags");
+            redFlagsList.innerHTML = "";
+
+            data.forEach(item => {
+                if (item.classification === "negative") {
+                    let li = document.createElement("li");
+                    li.textContent = item.sentence;
+                    redFlagsList.appendChild(li);
+                }
+            });
+        }
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "star"
+                },
+                "opacity": {
+                    "value": 1,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.7,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 200,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+    <script>
+        window.onload = function() {
+            fetchSummary(localStorage.getItem("extracted_text"));
+            fetchData(localStorage.getItem("extracted_text"));
+        };        
+
+        async function fetchSummary(extracted_text) {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/summarize-text', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: extracted_text
+                    })
+                });
+
+                const data = await response.json();
+
+                let summaryContainer = document.getElementById("summary");
+                summaryContainer.innerHTML = ""; // Clear previous content
+
+                if (data.summary) {
+                    let formattedSummary = formatLLMResponse(data.summary);
+                    summaryContainer.innerHTML = formattedSummary;
+                } else {
+                    summaryContainer.innerHTML = "<p>No summary generated.</p>";
+                }
+
+            } catch (error) {
+                console.error("Error fetching summary:", error);
+                document.getElementById('summary').innerHTML = `<p style="color:red;">Error fetching summary</p>`;
+            }
+        }
+
+        async function fetchData(extracted_text) {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/text-analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: extracted_text
+                    })
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                // Select Red Flags section and clear existing content
+                let redFlagsList = document.getElementById("redFlags");
+                redFlagsList.innerHTML = "";
+
+                // Iterate through all negative classifications and add them
+                let negativeSentences = data.filter(item => item.classification === "negative");
+
+                if (negativeSentences.length > 0) {
+                    negativeSentences.forEach(item => {
+                        let li = document.createElement("li");
+                        li.textContent = item.sentence.trim(); // Trim to remove unnecessary spaces
+                        redFlagsList.appendChild(li);
+                    });
+                } else {
+                    // If no red flags, show a default message
+                    let li = document.createElement("li");
+                    li.textContent = "No red flags detected.";
+                    redFlagsList.appendChild(li);
+                }
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById('output').innerHTML = `<p style="color:red;">Error fetching data</p>`;
+            }
+        }
+        function formatLLMResponse(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")  // Convert **bold** to <strong>
+                .replace(/\*(.*?)\*/g, "<em>$1</em>")  // Convert *italic* to <em>
+                .replace(/\n\s*[-*]\s*(.*?)(?=\n|$)/g, "<li>$1</li>") // Convert bullet points
+                .replace(/\n{2,}/g, "</p><p>") // Convert double new lines to paragraphs
+                .replace(/\n/g, "<br>"); // Convert single new lines to line breaks
+        }
+    </script>
+
+</body>
+
+</html>

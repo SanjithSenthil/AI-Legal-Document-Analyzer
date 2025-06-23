@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Print</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+</head>
+
+<body>
+
+    <div class="Split1">
+        <nav>
+            <img src="images/UBC-logo.png">
+            <div class="nav-links">
+                <a href="#" class="button" onclick="goToIndexPage()">Home</a>
+                <a href="#">How does the AI Work?</a>
+                <a href="#">Don't Believe Us?</a>
+                <a href="#">Extension</a>
+            </div>
+            <button>Get Started</button>
+        </nav>
+    <div class="wrapper2">
+        <header>Upload File</header>
+        <form action="#">
+            <input type="file" class="file-input" hidden id="fileInput">
+            <i class="ri-upload-cloud-2-line" id="uploadIcon"> </i>
+            <p>Browse File to Upload</p>
+        </form>
+        <section class="uploaded-area" id="uploadedArea" style="display: none;">
+            <li class="row">
+                <div class="content">
+                    <i class="ri-file-3-fill"></i>
+                    <div class="details">
+                        <span class="name" id="fileName">No file selected</span>
+                        <span class="size" id="fileSize">—</span>
+                    </div>
+                </div>
+                <i class="ri-check-line"></i>
+            </li>
+        </section>
+    </div>
+
+
+ 
+
+    <div class="result">
+        <button type="button" class="feedback-button" onclick="goToFeedbackPage()">SUBMIT</button>
+    </div>
+
+    <script>
+        function goToIndexPage() {
+            window.location.href = "index.html";
+        }
+
+        function triggerFileInput() {
+            document.getElementById('fileInput').click();
+        }
+
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const uploadedArea = document.getElementById('uploadedArea');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+
+            if (file) {
+                fileName.textContent = file.name;
+                fileSize.textContent = (file.size / 1024).toFixed(2) + " KB";
+                uploadedArea.style.display = "block";
+
+                if (file.type === "application/pdf") {
+                    extractText(file);
+                } else {
+                    alert("Please upload a valid PDF file.");
+                }
+            }
+        });
+
+        function extractText(file) {
+            const fileReader = new FileReader();
+
+            fileReader.onload = function () {
+                const typedArray = new Uint8Array(this.result);
+
+                pdfjsLib.getDocument(typedArray).promise.then(pdf => {
+                    let textPromises = [];
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        textPromises.push(pdf.getPage(i).then(page => {
+                            return page.getTextContent().then(textContent => {
+                                return textContent.items.map(item => item.str).join(" ");
+                            });
+                        }));
+                    }
+
+                    Promise.all(textPromises).then(texts => {
+                        const extractedText = texts.join("\n");
+                        sessionStorage.setItem("extractedText", extractedText); // Save extracted text for the next page
+                        localStorage.setItem("extracted_text", extractedText)
+                    });
+                }).catch(error => {
+                    console.error("Error loading PDF:", error);
+                });
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        }
+
+        function goToFeedbackPage() {
+            window.location.href = "belle-results.html";
+        }
+    </script>
+
+</body>
+
+</html>
